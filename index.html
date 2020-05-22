@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+  <head>
+	     <title>Pavel Casian</title>
+		 <link type='text/css' rel='stylesheet' href='style.css'>
+  </head>
+  <body>
+	<div id="headBar">
+        <h1 class="center">Pavel Casian</h1>
+		<h3 class="center">casianpavel1@gmail.com</h3>
+		<img src="portrait.jpg" alt="">
+	</div>
+	<div id="leftBar" > 
+	    <br>
+	    &nbsp; &nbsp; <button type="button" onclick="main.innerHTML = biography;" class="button">Biography</button>
+		<h3>&nbsp; &nbsp; Samples of Work</h3>
+		&nbsp; &nbsp; <button type="button" onclick="showURL(cwURL);" class="button">An essay on Salmon Migration</button>
+		<br><br>
+		&nbsp; &nbsp; <button type="button" onclick="showURL(muqURL);" class="button">Media Use Questionnaire</button>
+		<br><br>
+		&nbsp; &nbsp; <button type="button" onclick="showURL(flankURL);" class="button">Flanker Task: An experiment</button>
+	</div>
+	<div id="main"> </div>
+    <script src="myJS.js"></script>
+	<script>main.innerHTML = biography;</script>
+  </body>
+</html>
