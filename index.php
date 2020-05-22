@@ -1,5 +1,5 @@
 <?php
-  include('../shareCode/mysqlLink.php');
+  include('shareCode/mysqlLink.php');
  
   $link = connectDB();
   
