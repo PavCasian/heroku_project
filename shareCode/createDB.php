@@ -1,7 +1,7 @@
 <?php
 include('mysqlLink.php');
 
-$link = connectDB( true, false);
+$link = connectDB();
 if ($link) {
    $sql = "CREATE DATABASE IF NOT EXISTS myDB";
    $result = mysqli_query($link, $sql);
