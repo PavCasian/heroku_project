@@ -20,5 +20,3 @@
  function echoMsg($Lk, $Txt) {
 	 echo $Txt . ' MySQL link: ' . ($Lk ? 'OK' : 'Failed') . '<br>';
  }
-// for test use '$link = connectDB(true, false);'
- // also for test '@mysqli_close($link);'

@@ -1,7 +1,7 @@
 <?php
-  include('shareCode/mysqlLink.php');
+  /*include('shareCode/mysqlLink.php');
  
- /* $link = connectDB();
+  $link = connectDB();
   
   if ($link):
    @mysqli_close($link);
