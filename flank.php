@@ -28,12 +28,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	}
    $dateTime = $_POST['dateTime']; 
    $rec = $_POST['rec'];
-   $sql = "INSERT INTO flank
+   $sql_insert = "INSERT INTO flank
       (dateTime, taskTime, rec)
       VALUES('$dateTime', '$taskTime', '$rec')";
    $link = connectDB();
-   @mysqli_query($link, $sql);
-   @mysqli_close( $link);
+   $link->exec($sql_insert)
 ?>
 <script>myPage.innerHTML = debrief;</script>
 <?php

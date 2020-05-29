@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang='en'>
+<?php
+  include('../shareCode/mysqlLink.php');
+ 
+  $link = connectDB();
+  
+  if ($link):
+    header( 'Location: flank.php' );
 
-  <head>
-	     <title>Flank</title>
-
-  </head>
-  <body>
-		<h4>Not yet ready, please return soon</h4>
-  </body>
-</html>
+ else:
+ ?>
+       <h4> No connection to MySQL server. Please connect to access the task.</h4>
+<?php
+endif;
+?>

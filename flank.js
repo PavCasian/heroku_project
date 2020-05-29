@@ -11,7 +11,7 @@ var condInOneBlock = [0,1,2,3,4,5,0,1,2,3,4,5],
 var fixTimeOption = [500,600,700,800,900,1000,1100,1200],
     maxTgTime = 1500,
 	fbkTime = 800;
-var totBlock = 12, //in the final version use 12
+var totBlock = 2, //in the final version use 12
     block_cnt = -1,
 	rec = [],
 	recIdx = -1,
@@ -54,8 +54,8 @@ function instruction(){
 		'Greatings, <br> Thank you for showing '+ 
 	    'interest in our Flank task. '+  
 		'In the present task you will be presented with images of green cartoon faces. '+
-	    'Each image contains five faces, the one that is horizontally and vertically centred is the target face. '+
-		'The flanked faces at the four corners are distractors(see the image below). Your task is to indicate '+
+	    'Each image contains five faces. The face in the centre is the target face, '+
+		'while the flanked faces at the four corners are the distractors(see the image below). Your task is to indicate '+
 		'<b>as quickly and accurately as possible the gaze direction</b> of the target face. '+
 		'Press "Z" on your keyboard if target gaze direction is to the left, and '+
 		'press "M" on your keyboard if target gaze direction is to the right. '+
@@ -177,7 +177,7 @@ function submitData() {
 			   '</form>';
  document.getElementById("flankForm").submit();
 }
-var debrief = '<h2>Many thanks for your contributions.</h2>'+
+var debrief = '<h2>Many thanks for your contribution.</h2>'+
               '<p>'+
 			    'The Eriksen flanker task is a set of response '+ // from https://en.wikipedia.org/wiki/Eriksen_flanker_task
 				'inhibition tests used to assess the ability to suppress responses that '+
