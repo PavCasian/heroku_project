@@ -63,7 +63,7 @@ function instruction(){
 		'</p>'+
 		'<ol>'+
 		'<li>Press both "Z" and "M" to initiate the task.</li> '+
-		'<li>Again press both "Z" and "M" to start a new block of 12 trials.</li> '+
+		'<li>Again press both "Z" and "M" to start a new block of ' + totBlock + ' trials.</li> '+
 		'<li>Fixate the "@" symbol.</li> '+
 		'<li>Make the key response ("Z" or "M") within 1500 ms of the target display onset.</li> '+
 		'<li>Attend to the issued feedback:</li> '+
@@ -89,7 +89,7 @@ function flank(){
 	if(block_cnt < totBlock){
 		    footer.innerHTML = '';
 		    myPage.innerHTML = 
-			        '<h3 class = "center">Block ' + (block_cnt + 1) + ' of 12</h3>'+
+			        '<h3 class = "center">Block ' + (block_cnt + 1) + ' of ' + totBlock + '</h3>'+
 			        '<p>When you are '+
 					'ready press both "Z" and "M" (in any order) '+
 					'to continue</p>';      
