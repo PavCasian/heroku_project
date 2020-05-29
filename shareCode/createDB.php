@@ -1,5 +1,5 @@
 <?php
-include('mysqlLink.php');
+include('pgLink.php');
 
 $link = connectDB( true, false);
 if ($link) {

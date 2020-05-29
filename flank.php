@@ -12,7 +12,7 @@
 	<script src="flank.js"></script>
 
 <?php
-include('../shareCode/mysqlLink.php');
+include('shareCode/pgLink.php');
 
  
 if($_SERVER['REQUEST_METHOD']=='POST'){

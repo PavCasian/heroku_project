@@ -1,5 +1,5 @@
 <?php
-  include('../shareCode/mysqlLink.php');
+  include('shareCode/pgLink.php');
  
   $link = connectDB();
   
