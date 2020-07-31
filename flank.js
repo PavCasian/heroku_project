@@ -3,11 +3,22 @@ var myPage = document.getElementById( "myPage" ),
 	footer = document.getElementById( "footer" ); 
 var dateTime = Date().substring(4, 24);
 var startTime = Date.now();
+
+// type of stimuli:
+// L_N - target looking left, distractors looking straight (neutral)
+// L_C - target looking left, distractors looking in the same direction (congruent)
+// L_I - target looking left, distractors looking in the opposite direction (incongruent)
+// R_N - target right, distractors neutral
+// R_N - target right, distractors congruent
+// R_N - target right, distractors incongruent
+// fix - fixate picture
+// tooSlow indicator
 var imgF = ['L_N','L_C','L_I','R_N','R_C','R_I','fix','tooSlow'],
     fixF = imgF[6],
 	slowF = imgF[7];
+// condInOneBlock helps us retrieve the right answer after we applied shuffling
 var condInOneBlock = [0,1,2,3,4,5,0,1,2,3,4,5],
-    answerForCond = 'ZZZMMM';
+    answerForCond = 'ZZZMMM';  // the index coincides with the type of stimulus
 var fixTimeOption = [500,600,700,800,900,1000,1100,1200],
     maxTgTime = 1500,
 	fbkTime = 800;
