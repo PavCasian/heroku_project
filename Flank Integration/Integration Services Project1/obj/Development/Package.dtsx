@@ -1,0 +1,680 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/29/2020 5:53:50 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-5S1IFM3O"
+  DTS:CreatorName="LAPTOP-5S1IFM3O\casia"
+  DTS:DTSID="{BB399003-AF31-4028-AC18-D067D1DC1121}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{D9830DD4-09A3-40B1-B316-9A070A0C11CA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.AdventureWorks2017]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A48E4278-FF32-4757-9E64-C2491EA5CA8C}"
+      DTS:ObjectName="LocalHost.AdventureWorks2017">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorks2017;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.AdventureWorksDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E7CA3715-6FC5-4214-A459-EE4663DD578B}"
+      DTS:ObjectName="LocalHost.AdventureWorksDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorksDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Flank]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BEAA804D-48E0-4C00-A500-B0F9DB1CDB85}"
+      DTS:ObjectName="LocalHost.Flank">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Flank;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[postgres]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{C17446B5-55F2-486D-8344-02714F56B71F}"
+      DTS:ObjectName="postgres">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Integrated Security=SSPI;Connect Timeout=30;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PostgreSQL30]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{54EAFCE4-9433-4A40-8717-D1204D3EC95A}"
+      DTS:ObjectName="PostgreSQL30">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Dsn=PostgreSQL30;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[{CD6C3B00-BF58-4F9D-8F60-42CD30556FBC\}]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{CD6C3B00-BF58-4F9D-8F60-42CD30556FBC}"
+      DTS:ObjectName="{CD6C3B00-BF58-4F9D-8F60-42CD30556FBC}">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E656F1B1-0F88-4D44-827C-258F142EBE9D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{80A80060-AF59-4301-AC4A-3F95A06B4E2B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sqlCreateFlankTable">
+      <DTS:VariableValue
+        DTS:DataType="8">"DROP TABLE IF EXISTS Flank; CREATE TABLE Flank(FlankId INTEGER, DateTime DATETIME, TaskTime FLOAT, MeanAccuracy FLOAT, BlocksCompleted);"</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create FlankPerformance table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{69150981-D3C7-484A-A0EA-07F5174CB154}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create FlankPerformance table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BEAA804D-48E0-4C00-A500-B0F9DB1CDB85}"
+          SQLTask:SqlStatementSource="DROP TABLE IF EXISTS FlankPerformance; &#xA;CREATE TABLE FlankPerformance(&#xA;FlankId INT,&#xA;DateTime DATETIME, &#xA;TaskTime FLOAT, &#xA;MeanAccuracy FLOAT, &#xA;BlocksCompleted INT);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create FlankStaging table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B02323BE-FFC7-4C19-9AA5-F0A2734552E6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create FlankStaging table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BEAA804D-48E0-4C00-A500-B0F9DB1CDB85}"
+          SQLTask:SqlStatementSource="DROP TABLE IF EXISTS FlankStaging; &#xA;CREATE TABLE FlankStaging(&#xA;FlankId INT,&#xA;DateTime DATETIME, &#xA;TaskTime FLOAT, &#xA;rec VARCHAR(2000)&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{170E161C-7E0F-470D-8DC7-CE34C3B87C30}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Connect to Postgresql Server"
+              componentClassID="Microsoft.SSISODBCSrc"
+              contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="ODBC Source"
+              name="Connect to Postgresql Server"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."flank"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM flank;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Connect to Postgresql Server.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PostgreSQL30]"
+                  connectionManagerRefId="Package.ConnectionManagers[PostgreSQL30]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[flankid]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[flankid]"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[flankid]"
+                      name="flankid" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[datetime]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[datetime]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[datetime]"
+                      name="datetime" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[tasktime]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[tasktime]"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[tasktime]"
+                      name="tasktime"
+                      precision="4"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[rec]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[rec]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[rec]"
+                      name="rec" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[flankid]"
+                      dataType="i4"
+                      name="flankid" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[datetime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="datetime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[tasktime]"
+                      dataType="numeric"
+                      name="tasktime"
+                      precision="4"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[rec]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2000"
+                      name="rec" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[flankid]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[flankid]"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[flankid]"
+                      name="flankid" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[datetime]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[datetime]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[datetime]"
+                      name="datetime" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[tasktime]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[tasktime]"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[tasktime]"
+                      name="tasktime"
+                      precision="4"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[rec]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].ExternalColumns[rec]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[rec]"
+                      name="rec" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FlankStaging]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Flank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Flank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[flankid]"
+                      cachedDataType="i4"
+                      cachedName="flankid"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlankId]"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[flankid]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[datetime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="datetime"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateTime]"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[datetime]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tasktime]"
+                      cachedDataType="numeric"
+                      cachedName="tasktime"
+                      cachedPrecision="4"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaskTime]"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[tasktime]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rec]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2000"
+                      cachedName="rec"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rec]"
+                      lineageId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output].Columns[rec]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlankId]"
+                      dataType="i4"
+                      name="FlankId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateTime]"
+                      dataType="dbTimeStamp"
+                      name="DateTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaskTime]"
+                      dataType="r8"
+                      name="TaskTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rec]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="rec" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[ODBC Source Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\Data Flow Task\Connect to Postgresql Server.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4917A6A0-148C-4C91-8A7F-51041E91C124}"
+      DTS:From="Package\Create FlankPerformance table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{763CCE20-D532-47B3-A586-9B406458A9F6}"
+      DTS:From="Package\Create FlankStaging table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Create FlankPerformance table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task"
+          TopLeft="126.5,212.5" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Create FlankPerformance table"
+          TopLeft="93,139" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="204.5,181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.5"
+              Start="0,0"
+              End="0,24">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Create FlankStaging table"
+          TopLeft="89,59" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="189,101">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16,38"
+              Start="0,0"
+              End="16,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="12,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12,19"
+                    Point2="16,19"
+                    Point3="16,23" />
+                  <mssgle:LineSegment
+                    End="16,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Data Flow Task\Connect to Postgresql Server"
+          TopLeft="57,5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="63,88" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ODBC Source Output]"
+          TopLeft="164.5,47">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16,41"
+              Start="0,0"
+              End="-16,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="-4,20.5" />
+                  <mssgle:LineSegment
+                    End="-12,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12,20.5"
+                    Point2="-16,20.5"
+                    Point3="-16,24.5" />
+                  <mssgle:LineSegment
+                    End="-16,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Connect to Postgresql Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

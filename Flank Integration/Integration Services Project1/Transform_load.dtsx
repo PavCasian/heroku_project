@@ -1,0 +1,1669 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/4/2020 4:20:40 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="EASY"
+  DTS:CreatorName="EASY\casia"
+  DTS:DTSID="{F39A5D08-3A12-4770-939E-D59F14900869}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Transform_load"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{B626BB81-D6C3-4E2A-9FEE-76FAC5CFA814}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Flank]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7CFD9F61-80F2-490C-8932-439648EB42B1}"
+      DTS:ObjectName="LocalHost.Flank">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Flank;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A3F8B4A1-9E09-4737-B91B-3599AF9A9B5C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BlocksCompleted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{60B7478E-8C53-4EC7-AE51-EDDDBF7670B7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ContainsOneRow">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{86EA2BB7-0EFA-42AB-999A-D327E7EBF985}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MeanAccuracy">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7E832BBC-F7BE-4B13-B20F-1A95E52C4094}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="recordInformation">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Add MeanAccuracy and BlocksCompleted"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DA4AE383-2129-41AF-BDE5-CF8FE723A697}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Add MeanAccuracy and BlocksCompleted"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DC - Additional columns"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Output].Columns[MeanAccuracy]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Output].Columns[MeanAccuracy]"
+                      name="MeanAccuracy"
+                      precision="3"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0.00</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0.00</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Output].Columns[BlocksCompleted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Output].Columns[BlocksCompleted]"
+                      name="BlocksCompleted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Add MeanAccuracy and BlocksCompleted\Extract accuracy and blocks count from rec"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Extract accuracy and blocks count from rec"
+              version="12">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called once for every row that passes through the component from Input0.
+    ///
+    /// Example of reading a value from a column in the the row:
+    ///  string zipCode = Row.ZipCode
+    ///
+    /// Example of writing a value to a column in the row:
+    ///  Row.ZipCode = zipCode
+    /// </summary>
+    /// <param name="Row">The row that is currently passing through the component</param>
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        string rawRec = Row.rec;
+        double accCount = 0.00;
+        char[] sep_semi = { ';' };
+        String[] trialList = rawRec.Split(sep_semi);
+        int trialsCount = trialList.Length; // for all blocks
+
+        foreach (String trial in trialList)
+        {
+            char[] sep_comma = { ',' };
+            String[] trialDetails = trial.Split(sep_comma);
+            string trialAccStr = trialDetails[4];
+            int trialAcc;
+
+            bool isParsable = Int32.TryParse(trialAccStr, out trialAcc);
+            if (isParsable)
+                accCount += trialAcc;  // correct is 1, incorrect is 0
+            else
+                System.Windows.Forms.MessageBox.Show("Could not parse the accuracy score from the trial string.");
+        }
+        double accScore = accCount / trialsCount;
+        accScore = Math.Round(accScore, 2); // rounding to two decimal places
+        Row.BlocksCompleted = trialsCount / 12; // 12 trials in a block
+        Row.MeanAccuracy = (decimal)accScore;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String rec
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[0]);
+        }
+    }
+    public bool rec_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public Decimal MeanAccuracy
+    {
+        get
+        {
+            return Buffer.GetDecimal(BufferColumnIndexes[1]);
+        }
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool MeanAccuracy_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 BlocksCompleted
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[2]);
+        }
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool BlocksCompleted_IsNull
+    {
+        get
+        {
+            return IsNull(2);
+        }
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_9e018ee0b2134bd4b7c08a0eaa79488c.Properties.Settings.get_Default():SC_9e018ee0b2134bd4b7c08a0eaa79488c.Properties.Sett" +
+    "ings")]
+
+namespace SC_9e018ee0b2134bd4b7c08a0eaa79488c.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_9e018ee0b2134bd4b7c08a0eaa79488c.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{943ac821-36a2-4dc3-bc17-200d04be7e7f}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_9e018ee0b2134bd4b7c08a0eaa79488c</RootNamespace>
+    <AssemblyName>SC_9e018ee0b2134bd4b7c08a0eaa79488c</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_9e018ee0b2134bd4b7c08a0eaa79488c" IconIndex="0"></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_9e018ee0b2134bd4b7c08a0eaa79488c</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_9e018ee0b2134bd4b7c08a0eaa79488c</msb:DisplayName>
+    <msb:ProjectId>{22169872-BC0C-4136-A933-F807B3EC9496}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_9e018ee0b2134bd4b7c08a0eaa79488c.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_9e018ee0b2134bd4b7c08a0eaa79488c")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyProduct("SC_9e018ee0b2134bd4b7c08a0eaa79488c")]
+[assembly: AssemblyCopyright("Copyright @ HP Inc. 2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_9e018ee0b2134bd4b7c08a0eaa79488c.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_9e018ee0b2134bd4b7c08a0eaa79488c.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_9e018ee0b2134bd4b7c08a0eaa79488c.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_9e018ee0b2134bd4b7c08a0eaa79488c.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_9e018ee0b2134bd4b7c08a0eaa79488c.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_9e018ee0b2134bd4b7c08a0eaa79488c.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAGtUNV8AAAAAAAAAAOAAIiALATAAABYAAAAIAAAAAAAAWjUA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAAg1AABPAAAAAEAAAGQEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAYBUAAAAgAAAAFgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAGQEAAAAQAAAAAYAAAAYAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAA8
+NQAAAAAAAEgAAAACAAUArCIAAKQRAAABAAAAAAAAAFA0AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACioTMAQAoAAAAAEAABEDbwYAAAYK
+IwAAAAAAAAAACxeNGwAAASUWHzudDAYIbxIAAAoljmkNEwUWEwYrQREFEQaaEwcXjRsAAAElFh8s
+nRMIEQcRCG8SAAAKGpoSCSgTAAAKLAgHEQlsWAsrC3IBAABwKBQAAAomEQYXWBMGEQYRBY5pMrcH
+CWxbEwQRBBgoFQAAChMEAwkfDFtvDQAABgMRBCgWAAAKbwkAAAYqHgIoEgAABioqAgMEBSgXAAAK
+KlICexgAAAoCexkAAAoWlG8aAAAKKiICFigbAAAKKlICexgAAAoCexkAAAoXlG8cAAAKKjoCFwOM
+EQAAASgdAAAKKiICFygbAAAKKloDLAgCFygeAAAKKnJ1AABwcx8AAAp6UgJ7GAAACgJ7GQAAChiU
+byAAAAoqOgIYA4wdAAABKB0AAAoqIgIYKBsAAAoqWgMsCAIYKB4AAAoqcnUAAHBzHwAACnoeAigh
+AAAKKh4CKCIAAAoqfgIoIwAACgICcxYAAAZ9AQAABAICcxcAAAZ9AgAABCqSBHISAQBwGm8kAAAK
+LBUCBQIDKCUAAAoOBHMFAAAGbxQAAAYqSisHAgNvFQAABgNvEAAABi3xKgYqOgIoJgAACgIDfQMA
+AAQqOgIoJgAACgIDfQQAAAQqHgIoJgAACiqufgUAAAQtHnIiAQBw0AcAAAIoJwAACm8oAAAKcykA
+AAqABQAABH4FAAAEKhp+BgAABCoeAoAGAAAEKhp+BwAABCoeAigqAAAKKi5zHQAABoAHAAAEKgBC
+U0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAABcBgAAI34AAMgGAAAsBwAAI1N0cmlu
+Z3MAAAAA9A0AAJQBAAAjVVMAiA8AABAAAAAjR1VJRAAAAJgPAAAMAgAAI0Jsb2IAAAAAAAAAAgAA
+AVcVogEJAQAAAPoBMwAWAAABAAAAJQAAAAgAAAAHAAAAHgAAABEAAAAqAAAAEAAAAAEAAAADAAAA
+CQAAAA4AAAABAAAABQAAAAEAAAAAAEUDAQAAAAAABgAsAv4EBgDAAv4EBgB4AesEDwByBQAABgCl
+ATsEBgAPAjsEBgDwATsEBgCnAjsEBgBMAjsEBgBlAjsEBgC8ATsEBgDXAfsCCgCAArwACgC9BLwA
+DgCuBLwACgCEBLwABgAnA/MDCgBsBrwABgAQBvMDBgBbAesEBgDOBB4FBgB4BCYEEgArAS8DEgCM
+AS8DEgAKAREEBgBAAf4EBgCcBPMDBgAYA/MDBgAEAPMDFgDyBu8FFgBBBu8FBgAfA/MDBgBNBPMD
+BgBnBPMDBgDdAPMDBgCOAPMDBgAjBzsEAAAAAAoAAAAAAAEAAQABABAABgQAABAAAQABAAEAEACh
+BAAAOQABAAUAAQAQAE4GAABJAAEAEgABABAABAYAAE0AAwAWAAEAEACwBQAATQAEABcAAAAQACUF
+gQVNAAUAGAAAARAA3wWBBWUABwAcAAYABAazAAYAsAW3AAEAXAa7AAEAXAa7ABEA+gO/ABEA+gDD
+ABEAfgDHAFAgAAAAAMYA3gIGAAEAWCAAAAAAxgDpAgYAAQBgIAAAAADGAM4GywABAAwhAAAAAIYY
+3gQGAAIAFCEAAAAAhhjeBEsAAgAfIQAAAACGCEgA0QAFADQhAAAAAIYIbQN4AAUAPSEAAAAAhgj9
+BtUABQBSIQAAAACGCA4H2gAFAGEhAAAAAIYIsgN4AAYAaiEAAAAAhgjKA+AABgCBIQAAAACGCFAA
+5QAHAJYhAAAAAIYIZAABAAcApSEAAAAAhgh8A3gACACuIQAAAACGCJcD4AAIAMUhAAAAAIYA5QZ4
+AAkAzSEAAAAAhgAXBngACQDVIQAAAACGGN4EBgAJAPUhAAAAAMYAwQbpAAkAGiIAAAAAxgG6BssA
+DQAtIgAAAADGAc4GywAOAC8iAAAAAIYY3gTzAA8APiIAAAAAhhjeBPMAEABNIgAAAACDGN4EBgAR
+AFUiAAAAAJMIygT5ABEAgSIAAAAAkwjiAP4AEQCIIgAAAACTCO4AAwERAJAiAAAAAJYINQYJARIA
+lyIAAAAAhhjeBAYAEgCfIgAAAACRGOQEDgESAAAAAQDpBgAAAQDDBAAAAgC6BQAAAwCSBAAAAQD1
+AgAAAQD1AgAAAQD1AgAAAQD1AgAAAQATAAAAAgCyAAAAAwDDBAAABACSBAAAAQDDBAAAAQDpBgAA
+AQByBgAAAQByBgAAAQD1AgkA3gQBABEA3gQGABkA3gQKACkA3gQQADEA3gQQADkA3gQQAEEA3gQQ
+AEkA3gQQAFEA3gQQAFkA3gQQAGEA3gQQAGkA3gQGAKEA3gQGAMEA3gQVANEA3gQGAJEA3gIGAJEA
+6QIGAOEALwYrAOkAIgEyAPEA7QY5AAEBeAA/AIkAIwZFAHEA3gRLAHEAwwRVAHEAugVZAHkAFQNd
+AHEA2wNiAHkAJANnAHEA6gNtAHEA4gMBAAkB3gQQAHkAAQBzAHEA5QZ4AHEAFwZ4AJEA3gQGAOEA
+6AV8AJEAzgWEAJkA3gQGABkBoACKABkBHweTAKkA3gSZAMkA3gQGAC4ACwAyAS4AEwA7AS4AGwBa
+AS4AIwBjAS4AKwCMAS4AMwCMAS4AOwCSAS4AQwBjAS4ASwCfAS4AUwCMAS4AWwC9AUMAYwAHAuEA
+ewAHAuMAawAHAukAcwBaAQkBcwBaARsAAwABAAcABwAIAAkAAABMABIBAABxAxYBAAASBxoBAADO
+AxYBAABoAB8BAACbAxYBAADOBCMBAAACASgBAAA5Bi0BAgAGAAMAAgAHAAUAAgAIAAcAAQAJAAcA
+AgAKAAkAAQALAAkAAgAMAAsAAQANAAsAAgAOAA0AAQAPAA0AAgAZAA8AAgAaABEAAQAbABEAAgAc
+ABMABIAAAAEAAAAAAAAAAAAAAAAAJAAAAAQAAAAAAAAAAAAAAKEAGwAAAAAADwAAAAAAAAAAAAAA
+qgB8BgAAAAAPAAAAAAAAAAAAAACqAJkGAAAAAAQAAAAAAAAAAAAAAKEA8wMAAAAABAAAAAAAAAAA
+AAAAoQDvBQAAAAAAAAAAAQAAAC8FAAAAAABHZXRJbnQzMgA8TW9kdWxlPgBJbnB1dElEAG1zY29y
+bGliAFNDXzllMDE4ZWUwYjIxMzRiZDRiN2MwOGEwZWFhNzk0ODhjAGdldF9yZWMAZ2V0X0Jsb2Nr
+c0NvbXBsZXRlZABzZXRfQmxvY2tzQ29tcGxldGVkAFJvdW5kAGRlZmF1bHRJbnN0YW5jZQBSdW50
+aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBJbnB1dE5hbWUATWljcm9zb2Z0LlNxbFNl
+cnZlci5EdHMuUGlwZWxpbmUAVHlwZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1
+bHR1cmUAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UAVHJ5UGFyc2UARWRpdG9yQnJvd3NhYmxlU3Rh
+dGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0
+ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRp
+dGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0
+dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlv
+bkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVj
+dEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29tcG9uZW50
+RW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBh
+dGliaWxpdHlBdHRyaWJ1dGUAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQB2YWx1ZQBTeXN0ZW0uUnVu
+dGltZS5WZXJzaW9uaW5nAEdldFN0cmluZwBNYXRoAEdldERlY2ltYWwAU3lzdGVtLkNvbXBvbmVu
+dE1vZGVsAFNDXzllMDE4ZWUwYjIxMzRiZDRiN2MwOGEwZWFhNzk0ODhjLmRsbABnZXRfcmVjX0lz
+TnVsbABnZXRfQmxvY2tzQ29tcGxldGVkX0lzTnVsbABzZXRfQmxvY2tzQ29tcGxldGVkX0lzTnVs
+bABnZXRfTWVhbkFjY3VyYWN5X0lzTnVsbABzZXRfTWVhbkFjY3VyYWN5X0lzTnVsbABTZXROdWxs
+AHNldF9JdGVtAFN5c3RlbQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0
+aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRp
+b25FeGNlcHRpb24AU3RyaW5nQ29tcGFyaXNvbgBDdWx0dXJlSW5mbwBPdXRwdXROYW1lTWFwAE91
+dHB1dE1hcABDaGFyAElucHV0MEJ1ZmZlcgBQaXBlbGluZUJ1ZmZlcgBTY3JpcHRCdWZmZXIAZ2V0
+X1Jlc291cmNlTWFuYWdlcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5S
+dW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ185ZTAxOGVlMGIyMTM0
+YmQ0YjdjMDhhMGVhYTc5NDg4Yy5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdn
+aW5nTW9kZXMAU0NfOWUwMThlZTBiMjEzNGJkNGI3YzA4YTBlYWE3OTQ4OGMuUHJvcGVydGllcwBW
+YXJpYWJsZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdzAEVx
+dWFscwBTeXN0ZW0uV2luZG93cy5Gb3JtcwBDb25uZWN0aW9ucwBPYmplY3QARW5kT2ZSb3dzZXQA
+b3BfRXhwbGljaXQAU3BsaXQAZ2V0X0RlZmF1bHQARGlhbG9nUmVzdWx0AFVzZXJDb21wb25lbnQA
+UGFyZW50Q29tcG9uZW50AFNjcmlwdENvbXBvbmVudABNaWNyb3NvZnQuU3FsU2VydmVyLlR4U2Ny
+aXB0AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuUGlwZWxpbmVIb3N0AElucHV0MF9Qcm9jZXNzSW5wdXQA
+SW5wdXQwX1Byb2Nlc3NJbnB1dFJvdwBOZXh0Um93AFNob3cATWVzc2FnZUJveABnZXRfTWVhbkFj
+Y3VyYWN5AHNldF9NZWFuQWNjdXJhY3kAZ2V0X0Fzc2VtYmx5AABzQwBvAHUAbABkACAAbgBvAHQA
+IABwAGEAcgBzAGUAIAB0AGgAZQAgAGEAYwBjAHUAcgBhAGMAeQAgAHMAYwBvAHIAZQAgAGYAcgBv
+AG0AIAB0AGgAZQAgAHQAcgBpAGEAbAAgAHMAdAByAGkAbgBnAC4AAICbSQBzAE4AdQBsAGwAIABw
+AHIAbwBwAGUAcgB0AHkAIABjAGEAbgBuAG8AdAAgAGIAZQAgAHMAZQB0ACAAdABvACAARgBhAGwA
+cwBlAC4AIABBAHMAcwBpAGcAbgAgAGEAIAB2AGEAbAB1AGUAIAB0AG8AIAB0AGgAZQAgAGMAbwBs
+AHUAbQBuACAAaQBuAHMAdABlAGEAZAAuAAAPSQBuAHAAdQB0ACAAMAAAcVMAQwBfADkAZQAwADEA
+OABlAGUAMABiADIAMQAzADQAYgBkADQAYgA3AGMAMAA4AGEAMABlAGEAYQA3ADkANAA4ADgAYwAu
+AFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAA8TfsrXzc6kGsKCqypoHx
+ogAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERXQ8HCg4NHQMIDR0OCA4dAwgGIAEdDh0DBgACAg4Q
+CAUAARF9DgUAAg0NCAUAARFFDQkgAwESPR0IEkEDBhI9AwYdCAQgAQ4IBCABAggFIAERRQgFIAIB
+CBwEIAEICAMgAAIHIAICDhGAiQUgAR0ICAgAARKAjRGAkQUgABKAlQcgAgEOEoCVCLd6XFYZNOCJ
+CImEXc2AgMyRAwYSFAMGEhgDBhJJAwYSVQMGElkDBhIgBSABARIMAyAADgQgABFFBSABARFFBCAB
+AQIDIAAICSAEAQgOEj0SQQUgAQESSQQAABJVBAAAElkFAAEBElkEAAASIAMAAAEDKAAOAygAAgQo
+ABFFAygACAQIABJVBAgAElkECAASIAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRo
+cm93cwEIAQACAAAAAAAoAQAjU0NfOWUwMThlZTBiMjEzNGJkNGI3YzA4YTBlYWE3OTQ4OGMAAAUB
+AAAAAAwBAAdIUCBJbmMuAAAdAQAYQ29weXJpZ2h0IEAgSFAgSW5jLiAyMDIwAABJAQAaLk5FVEZy
+YW1ld29yayxWZXJzaW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3
+b3JrIDQuNwQBAAAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVh
+ZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tl
+eVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VT
+ZXQCAAAAAAAAAAAAAABQQURQQURQtAAAADA1AAAAAAAAAAAAAEo1AAAAIAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAA8NQAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABI
+AAAAWEAAAAgEAAAAAAAAAAAAAAgENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAA
+AAC9BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAA
+AAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4A
+AAAAAAAAsARoAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAABEAwAAAQAwADAAMAAw
+ADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAMAAIAAEAQwBvAG0AcABhAG4A
+eQBOAGEAbQBlAAAAAABIAFAAIABJAG4AYwAuAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBw
+AHQAaQBvAG4AAAAAAFMAQwBfADkAZQAwADEAOABlAGUAMABiADIAMQAzADQAYgBkADQAYgA3AGMA
+MAA4AGEAMABlAGEAYQA3ADkANAA4ADgAYwAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAA
+AAAAMQAuADAALgAwAC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8A
+OQBlADAAMQA4AGUAZQAwAGIAMgAxADMANABiAGQANABiADcAYwAwADgAYQAwAGUAYQBhADcAOQA0
+ADgAOABjAC4AZABsAGwAAABWABkAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8A
+cAB5AHIAaQBnAGgAdAAgAEAAIABIAFAAIABJAG4AYwAuACAAMgAwADIAMAAAAAAAKgABAAEATABl
+AGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwA
+RgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AOQBlADAAMQA4AGUAZQAwAGIAMgAxADMANABiAGQANABi
+ADcAYwAwADgAYQAwAGUAYQBhADcAOQA0ADgAOABjAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUA
+YwB0AE4AYQBtAGUAAAAAAFMAQwBfADkAZQAwADEAOABlAGUAMABiADIAMQAzADQAYgBkADQAYgA3
+AGMAMAA4AGEAMABlAGEAYQA3ADkANAA4ADgAYwAAADQACAABAFAAcgBvAGQAdQBjAHQAVgBlAHIA
+cwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4AAgAAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBz
+AGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAABcNQAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_9e018ee0b2134bd4b7c08a0eaa79488c</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">0F</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\Extract accuracy and blocks count from rec.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\Extract accuracy and blocks count from rec.Inputs[Input 0].Columns[rec]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2000"
+                      cachedName="rec"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[rec]" />
+                    <inputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\Extract accuracy and blocks count from rec.Inputs[Input 0].Columns[MeanAccuracy]"
+                      cachedDataType="numeric"
+                      cachedName="MeanAccuracy"
+                      cachedPrecision="3"
+                      cachedScale="2"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Output].Columns[MeanAccuracy]"
+                      usageType="readWrite" />
+                    <inputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\Extract accuracy and blocks count from rec.Inputs[Input 0].Columns[BlocksCompleted]"
+                      cachedDataType="i4"
+                      cachedName="BlocksCompleted"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Output].Columns[BlocksCompleted]"
+                      usageType="readWrite" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\Extract accuracy and blocks count from rec.Outputs[Output 0]"
+                  name="Output 0"
+                  synchronousInputId="Package\Add MeanAccuracy and BlocksCompleted\Extract accuracy and blocks count from rec.Inputs[Input 0]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FlankPerformance]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Flank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Flank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FlankId]"
+                      cachedDataType="i4"
+                      cachedName="FlankId"
+                      externalMetadataColumnId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlankId]"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[FlankId]" />
+                    <inputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DateTime"
+                      externalMetadataColumnId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateTime]"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[DateTime]" />
+                    <inputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TaskTime]"
+                      cachedDataType="r8"
+                      cachedName="TaskTime"
+                      externalMetadataColumnId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaskTime]"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[TaskTime]" />
+                    <inputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MeanAccuracy]"
+                      cachedDataType="numeric"
+                      cachedName="MeanAccuracy"
+                      cachedPrecision="3"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MeanAccuracy]"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Output].Columns[MeanAccuracy]" />
+                    <inputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BlocksCompleted]"
+                      cachedDataType="i4"
+                      cachedName="BlocksCompleted"
+                      externalMetadataColumnId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BlocksCompleted]"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Output].Columns[BlocksCompleted]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlankId]"
+                      dataType="i4"
+                      name="FlankId" />
+                    <externalMetadataColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateTime]"
+                      dataType="dbTimeStamp"
+                      name="DateTime" />
+                    <externalMetadataColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TaskTime]"
+                      dataType="r8"
+                      name="TaskTime" />
+                    <externalMetadataColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MeanAccuracy]"
+                      dataType="r8"
+                      name="MeanAccuracy" />
+                    <externalMetadataColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BlocksCompleted]"
+                      dataType="i4"
+                      name="BlocksCompleted" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE Source FlankStaging"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FlankStaging]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Flank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Flank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[FlankId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].ExternalColumns[FlankId]"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[FlankId]"
+                      name="FlankId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[DateTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].ExternalColumns[DateTime]"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[DateTime]"
+                      name="DateTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[TaskTime]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].ExternalColumns[TaskTime]"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[TaskTime]"
+                      name="TaskTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[rec]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].ExternalColumns[rec]"
+                      length="2000"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].Columns[rec]"
+                      name="rec"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].ExternalColumns[FlankId]"
+                      dataType="i4"
+                      name="FlankId" />
+                    <externalMetadataColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].ExternalColumns[DateTime]"
+                      dataType="dbTimeStamp"
+                      name="DateTime" />
+                    <externalMetadataColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].ExternalColumns[TaskTime]"
+                      dataType="r8"
+                      name="TaskTime" />
+                    <externalMetadataColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output].ExternalColumns[rec]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2000"
+                      name="rec" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[FlankId]"
+                      dataType="i4"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[FlankId]"
+                      name="FlankId" />
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[DateTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[DateTime]"
+                      name="DateTime" />
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[TaskTime]"
+                      dataType="r8"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[TaskTime]"
+                      name="TaskTime" />
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[rec]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2000"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[rec]"
+                      name="rec" />
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Add MeanAccuracy and BlocksCompleted.Paths[Derived Column Output]"
+              endId="Package\Add MeanAccuracy and BlocksCompleted\Extract accuracy and blocks count from rec.Inputs[Input 0]"
+              name="Derived Column Output"
+              startId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Add MeanAccuracy and BlocksCompleted.Paths[OLE DB Source Output]"
+              endId="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Add MeanAccuracy and BlocksCompleted.Paths[Output 0]"
+              endId="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Output 0"
+              startId="Package\Add MeanAccuracy and BlocksCompleted\Extract accuracy and blocks count from rec.Outputs[Output 0]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="272,42"
+          Id="Package\Add MeanAccuracy and BlocksCompleted"
+          TopLeft="110,43" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Add MeanAccuracy and BlocksCompleted">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging"
+          TopLeft="89,87" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Add MeanAccuracy and BlocksCompleted\DC - Additional columns"
+          TopLeft="117,160" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination"
+          TopLeft="156,337" />
+        <NodeLayout
+          Size="282,42"
+          Id="Package\Add MeanAccuracy and BlocksCompleted\Extract accuracy and blocks count from rec"
+          TopLeft="94,246" />
+        <EdgeLayout
+          Id="Package\Add MeanAccuracy and BlocksCompleted.Paths[Derived Column Output]"
+          TopLeft="213,202">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22,44"
+              Start="0,0"
+              End="22,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="4,22" />
+                  <mssgle:LineSegment
+                    End="18,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18,22"
+                    Point2="22,22"
+                    Point3="22,26" />
+                  <mssgle:LineSegment
+                    End="22,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Add MeanAccuracy and BlocksCompleted.Paths[Output 0]"
+          TopLeft="238.25,288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Add MeanAccuracy and BlocksCompleted.Paths[OLE DB Source Output]"
+          TopLeft="187.5,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.5,31"
+              Start="0,0"
+              End="25.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="21.5,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.5,15.5"
+                    Point2="25.5,15.5"
+                    Point3="25.5,19.5" />
+                  <mssgle:LineSegment
+                    End="25.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add MeanAccuracy and BlocksCompleted\OLE Source FlankStaging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add MeanAccuracy and BlocksCompleted\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
